@@ -1,17 +1,17 @@
 #include <iostream>
-#include <chrono>
+#include <time.h>
 
 using namespace std;
 
 int main()
 {
-    auto tstart = chrono::high_resolution_clock::now();
+    clock_t tstart = clock();
         for(int i=0; i<8000; i++)
         {
             cout<<255.234113*i<<256.876383*i<<endl;
         }
-    auto tend = chrono::high_resolution_clock::now();
-    chrono::duration<float> duration = tend - tstart;
+    clock_t tend = clock();
+    double seconds = (double)(tend - tstart) / CLOCKS_PER_SEC;
     cout<<endl;
-    cout<<"C++ cycle duration is: "<<duration.count()<<endl;
+    cout<<"C++ cycle duration is: "<<seconds<<endl;
 }
